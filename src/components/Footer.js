@@ -11,14 +11,14 @@ export default class Footer extends React.Component {
 }
 
 const FooterContainer = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	margin: 30,
-	fontSize: 12,
-	textAlign: 'center'
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: 30,
+  fontSize: 12,
+  textAlign: 'center'
 }
 
 const link = {
-	color: '#ffef00'
+  color: '#ffef00'
 }

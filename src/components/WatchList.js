@@ -5,46 +5,46 @@ import '../css/App.css';
 
 export default class WatchList extends React.Component {
 
-	handleVideoClick = (e) => {
-  	e.stopPropagation();
-  	e.currentTarget.parentNode.parentNode.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
-	}
+  handleVideoClick = (e) => {
+    e.stopPropagation();
+    e.currentTarget.parentNode.parentNode.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
+  }
 
-	handleVideoHover = (e) => {
-  	e.stopPropagation();
-  	e.currentTarget.querySelector('.VideoOverlay').style.display = 'flex';
-	}
+  handleVideoHover = (e) => {
+    e.stopPropagation();
+    e.currentTarget.querySelector('.VideoOverlay').style.display = 'flex';
+  }
 
-	handleVideoLeave = (e) => {
-  	e.stopPropagation();
-  	e.currentTarget.querySelector('.VideoOverlay').style.display = 'none';
-	}
+  handleVideoLeave = (e) => {
+    e.stopPropagation();
+    e.currentTarget.querySelector('.VideoOverlay').style.display = 'none';
+  }
 
-	removeVideo = (e) => {
-		e.stopPropagation();
-		let btn = e.currentTarget;
-		let id = btn.parentNode.parentNode.parentNode.parentNode.dataset.video;
-		for(var i = 0; i < this.props.watchList.length; i++) {
-			if(this.props.watchList[i].id === id) {
-				this.setState({
-					watchList: this.props.watchList.splice(i, 1)
-				});
-				localStorage.setItem('watchList', JSON.stringify(this.props.watchList));
-			}
-		}
-	}
+  removeVideo = (e) => {
+    e.stopPropagation();
+    let btn = e.currentTarget;
+    let id = btn.parentNode.parentNode.parentNode.parentNode.dataset.video;
+    for (var i = 0; i < this.props.watchList.length; i++) {
+      if (this.props.watchList[i].id === id) {
+        this.setState({
+          watchList: this.props.watchList.splice(i, 1)
+        });
+        localStorage.setItem('watchList', JSON.stringify(this.props.watchList));
+      }
+    }
+  }
 
   render() {
-  	let watchItems = this.props.watchList.map( (item, index) => {
-  		let bg = {
-  			background: `url(${item.snippet.thumbnails.standard.url})`,
-  			backgroundSize: 'cover',
-  			backgroundPosition: 'center center',
-  			borderRadius: 20,
-  			cursor: 'pointer',
-  		}
-  		return (
-  			<div 
+    let watchItems = this.props.watchList.map((item, index) => {
+      let bg = {
+        background: `url(${item.snippet.thumbnails.standard.url})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        borderRadius: 20,
+        cursor: 'pointer',
+      }
+      return (
+        <div 
   				style={bg} 
   				className="VideoList" 
   				key={item.id} 
@@ -64,8 +64,8 @@ export default class WatchList extends React.Component {
 	  					</div>
 	  				</div>
   			</div>
-  		)
-  	});
+      )
+    });
     return (
       <div>
       	<ListNav />
@@ -81,41 +81,41 @@ export default class WatchList extends React.Component {
 }
 
 const Container = {
-	margin: '0 auto',
-	width: '90%',
+  margin: '0 auto',
+  width: '90%',
 }
 
 const HeadlineStyle = {
-	marginTop: 50,
-	fontSize: '1.5em'
+  marginTop: 50,
+  fontSize: '1.5em'
 }
 
 const videoContainer = {
-	display: 'flex',
-	flexWrap: 'wrap',
+  display: 'flex',
+  flexWrap: 'wrap',
 }
 
 const VideoOverlayStyle = {
-	display: 'none',
-	justifyContent: 'center',
-	alignItems: 'center',
-	height: '100%',
-	background: 'rgba(28, 30, 46, .8)',
-	borderRadius: 20
+  display: 'none',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+  background: 'rgba(28, 30, 46, .8)',
+  borderRadius: 20
 }
 
 const overlayContent = {
-	display: 'flex',
-	flexDirection: 'column'
+  display: 'flex',
+  flexDirection: 'column'
 }
 
 const videoTitle = {
-	fontSize: 12,
-	padding: '15px 30px 15px 30px',
-	textAlign: 'center'
+  fontSize: 12,
+  padding: '15px 30px 15px 30px',
+  textAlign: 'center'
 }
 
 const videoIcons = {
-	display: 'flex',
-	justifyContent: 'center'
+  display: 'flex',
+  justifyContent: 'center'
 }
