@@ -6,8 +6,7 @@ import WatchList from './WatchList';
 import Favorites from './Favorites';
 import ChannelSection from './ChannelSection';
 
-const apiKey = 'AIzaSyCXk7AgRlrxtHXPe-FP_IxMLHZE7C-xzf8'; // local api
-//const apiKey = 'AIzaSyC8EEudlEjgSVxN5dc9ntH9Ubwx4N5jc4E'; //apikey for heroku 
+const apiKey = 'API_KEY';
 
 const urls = [
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_otq12MLlspCliJgL2u02A&key=${apiKey}`,
