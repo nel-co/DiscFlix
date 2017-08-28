@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '../css/App.css';
 import WatchList from './WatchList';
 import Favorites from './Favorites';
 import ChannelSection from './ChannelSection';
 
-//const apiKey = 'AIzaSyCXk7AgRlrxtHXPe-FP_IxMLHZE7C-xzf8'; apikey for heroku 
-const apiKey = 'AIzaSyC8EEudlEjgSVxN5dc9ntH9Ubwx4N5jc4E';
+const apiKey = 'API_KEY'; 
 
 const urls = [
 	`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_otq12MLlspCliJgL2u02A&key=${apiKey}`,
@@ -24,7 +24,7 @@ export default class App extends Component {
     	spinVideos: [],
     	centralVideos: [],
     	dggVideos: [],
-    	//add dg tutorials
+    	//add dg tutorials?
     	favorites: JSON.parse(localStorage.getItem('favorites')) || [],
     	watchList: JSON.parse(localStorage.getItem('watchList')) || []
     }
@@ -73,6 +73,6 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  favorites: React.PropTypes.array,
-  watchList: React.PropTypes.array
+  favorites: PropTypes.array,
+  watchList: PropTypes.array
 };
