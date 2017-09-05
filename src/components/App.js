@@ -6,8 +6,6 @@ import WatchList from './WatchList';
 import Favorites from './Favorites';
 import ChannelSection from './ChannelSection';
 
-//const apiKey = 'AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8';
-
 const urls = [
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_otq12MLlspCliJgL2u02A&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UUmGyCEbHfY91NFwHgioNLMQ&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
