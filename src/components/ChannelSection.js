@@ -4,8 +4,6 @@ import Jomez from './Jomez';
 import Spin from './Spin';
 import Central from './Central';
 import DiscGuy from './DiscGuy';
-
-import VideoScreen from './VideoScreen';
 import Footer from './Footer';
 import '../css/App.css';
 

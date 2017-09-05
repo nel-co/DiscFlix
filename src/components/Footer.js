@@ -4,7 +4,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div style={FooterContainer}>
-      	Built by &nbsp;<a style={link} href="http://heyimnelson.com/" target="_blank" rel="noopener">Nelson</a>
+      	Built by &nbsp;<a style={link} href="http://heyimnelson.com/" target="_blank" rel="noopener noreferrer">Nelson</a>
       </div>
     );
   }
