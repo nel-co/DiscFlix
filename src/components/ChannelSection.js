@@ -124,13 +124,6 @@ export default class ChannelSection extends React.Component {
             handleDefaultFavorite={this.handleDefaultFavorite}
             handleDefaultBookMark={this.handleDefaultBookMark}
          />
-          <DiscGuy 
-            dggVideos={this.props.dggVideos}
-            favorites={this.props.favorites}
-            watchList={this.props.watchList}
-            handleDefaultFavorite={this.handleDefaultFavorite}
-            handleDefaultBookMark={this.handleDefaultBookMark}
-          />
         </div>
         <div className="loading-container">
           <div className="loading-circle"></div>
