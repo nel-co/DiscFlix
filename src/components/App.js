@@ -34,7 +34,7 @@ export default class App extends Component {
       this.setState({
         spinVideos: results[0].items,
         jomezVideos: results[1].items,
-        centralVideos: results[2].items,
+        // centralVideos: results[2].items,
         dggVideos: results[3].items
       });
     })

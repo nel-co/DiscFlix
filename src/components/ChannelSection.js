@@ -146,5 +146,5 @@ function showResults() {
   setTimeout(function() {
     load.style.display = 'none';
     main.style.display = 'flex';
-  }, 1000);
+  }, 1200);
 }
