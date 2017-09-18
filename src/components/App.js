@@ -9,11 +9,16 @@ import ChannelSection from './ChannelSection';
 const urls = [
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_otq12MLlspCliJgL2u02A&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UUmGyCEbHfY91NFwHgioNLMQ&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
-  // `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UUy1Rr-GkiL8vlPApKsw6SuA&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
+  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UUy1Rr-GkiL8vlPApKsw6SuA&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_VFGL2488ElJvThosFxaRQ&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`
 ];
 
 export default class App extends Component {
+
+  static propTypes = {
+    favorites: PropTypes.array,
+    watchList: PropTypes.array
+  }
 
   constructor(props) {
     super(props);
@@ -34,7 +39,7 @@ export default class App extends Component {
       this.setState({
         spinVideos: results[0].items,
         jomezVideos: results[1].items,
-        // centralVideos: results[2].items,
+        centralVideos: results[2].items,
         dggVideos: results[3].items
       });
     })
@@ -69,8 +74,3 @@ export default class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  favorites: PropTypes.array,
-  watchList: PropTypes.array
-};

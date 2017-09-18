@@ -22,7 +22,7 @@ export default class DiscGuy extends React.Component {
   render() {
     let channelItems = this.props.dggVideos.map((item, index) => {
       let bg = {
-        background: `url(${item.snippet.thumbnails.standard.url})`,
+        background: `url(${item.snippet.thumbnails.high.url})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         borderRadius: 20,

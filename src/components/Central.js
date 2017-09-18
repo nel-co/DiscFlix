@@ -22,7 +22,7 @@ export default class Central extends React.Component {
   render() {
     let channelItems = this.props.centralVideos.map((item, index) => {
       let bg = {
-        background: `url(${item.snippet.thumbnails.standard.url})`,
+        background: `url(${item.snippet.thumbnails.medium.url})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         borderRadius: 20,
