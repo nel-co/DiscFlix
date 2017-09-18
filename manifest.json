@@ -1,0 +1,20 @@
+{
+  "short_name": "DGVN",
+  "name": "Disc Golf Video Network",
+  "icons": [
+    {
+      "src": "img_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1c1e2e",
+  "background_color": "#1c1e2e"
+}
