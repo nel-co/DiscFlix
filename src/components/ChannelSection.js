@@ -117,13 +117,6 @@ export default class ChannelSection extends React.Component {
             handleDefaultFavorite={this.handleDefaultFavorite}
             handleDefaultBookMark={this.handleDefaultBookMark}
           />
-          <Central 
-            centralVideos={this.props.centralVideos}
-            favorites={this.props.favorites}
-            watchList={this.props.watchList}
-            handleDefaultFavorite={this.handleDefaultFavorite}
-            handleDefaultBookMark={this.handleDefaultBookMark}
-         />
           <DiscGuy 
             dggVideos={this.props.dggVideos}
             favorites={this.props.favorites}

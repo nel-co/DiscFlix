@@ -41,10 +41,11 @@ export default class App extends Component {
   }
 
   render() {
+    const baseUrl = process.env.PUBLIC_URL;
     return (
       <Router>
         <div>
-          <Route exact path='/' component={ () => 
+          <Route exact path={"https://nel-co.github.io/DGVN/"} component={ () => 
             <ChannelSection 
               jomezVideos={this.state.jomezVideos}
               spinVideos={this.state.spinVideos}
