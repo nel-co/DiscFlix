@@ -2,11 +2,14 @@ import React from 'react';
 import OwlCarousel from 'react-owl-carousel2';
 import '../css/App.css';
 
+import {owlOptions, marginTop, ChannelTitle, ChannelLink, SubscribeBtn, VideoOverlayStyle} from './globalStyles.js';
+
 export default class Jomez extends React.Component {
 
   handleVideoClick = (e) => {
     e.stopPropagation();
     e.currentTarget.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
+    this.props.handleDefaultHistory(e,this.props.jomezVideos);
   }
 
   handleVideoHover = (e) => {
@@ -28,7 +31,7 @@ export default class Jomez extends React.Component {
         borderRadius: 20,
         boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.19)',
         cursor: 'pointer',
-        height: 200
+        minHeight: 200
       }
       return (
         <div 
@@ -40,7 +43,7 @@ export default class Jomez extends React.Component {
           onMouseOver={this.handleVideoHover} 
           onMouseLeave={this.handleVideoLeave}>
             <div style={VideoOverlayStyle} className="VideoOverlay">
-              <span onClick={this.handleVideoClick}>
+              <span onClick={(e) => this.handleVideoClick(e)}>
                 <a href={`https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`} target="_blank" rel="noopener"><i className="fa fa-link" aria-hidden="true"></i></a>
               </span>
               <span onClick={(e) => this.props.handleDefaultBookMark(e,this.props.jomezVideos)}><i className="fa fa-bookmark" aria-hidden="true"></i></span>
@@ -68,62 +71,3 @@ export default class Jomez extends React.Component {
     );
   }
 }
-
-const marginTop = {
-  marginTop: 25,
-  marginBottom: 25
-}
-
-const ChannelTitle = {
-  display: 'flex',
-  alignItems: 'center',
-  fontSize: 19,
-  letterSpacing: 1,
-  marginBottom: 25
-}
-
-const ChannelLink = {
-  color: '#ffef00',
-  textDecoration: 'none',
-  paddingLeft: 20,
-  paddingRight: 20
-}
-
-const SubscribeBtn = {
-  fontSize: 10,
-  textTransform: 'uppercase',
-  border: '1px solid #ffef00',
-  borderRadius: 20,
-  padding: '10px 25px 10px 25px'
-}
-
-const VideoOverlayStyle = {
-  display: 'none',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100%',
-  background: 'rgba(28, 30, 46, .8)',
-  borderRadius: 20
-}
-
-const owlOptions = {
-  items: 4,
-  dots: false,
-  lazyLoad: true,
-  margin: 10,
-  stagePadding: 0,
-  responsive: {
-    0: {
-      items: 1
-    },
-    600: {
-      items: 2
-    },
-    1440: {
-      items: 3
-    },
-    1920: {
-      items: 4
-    }
-  }
-};

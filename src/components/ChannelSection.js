@@ -29,6 +29,14 @@ export default class ChannelSection extends React.Component {
       }
     }
 
+    for (let i = 0; i < findVideoMatches.length; i++) {
+      for (let j = 0; j < this.props.history.length; j++) {
+        if (findVideoMatches[i].childNodes[0].dataset.video === this.props.history[j].id) {
+          findVideoMatches[i].childNodes[0].style.borderBottom = '3px solid #ffef00';
+        }
+      }
+    }
+
     showResults();
 
   }
@@ -97,40 +105,48 @@ export default class ChannelSection extends React.Component {
     }
   }
 
+  handleDefaultHistory = (e, videoArray) => {
+    if (this.props.history.length === 0) {
+      this.setState({
+        history: this.props.history.push(videoArray[e.currentTarget.parentNode.parentNode.dataset.index])
+      });
+      // store history to local storage
+      localStorage.setItem('history', JSON.stringify(this.props.history));
+    } else {
+      for (var i = 0; i < this.props.history.length; i++) {
+        if (e.currentTarget.parentNode.parentNode.dataset.video !== this.props.history[i].id) {
+          // push to history array
+          this.setState({
+            history: this.props.history.push(videoArray[e.currentTarget.parentNode.parentNode.dataset.index])
+          });
+          // store history to local storage
+          localStorage.setItem('history', JSON.stringify(this.props.history));
+        }
+      }
+    }
+  }
+
   render() {
+    const props = {
+      jomezVideos: this.props.jomezVideos,
+      spinVideos: this.props.spinVideos,
+      centralVideos: this.props.centralVideos,
+      dggVideos: this.props.dggVideos,
+      favorites: this.props.favorites,
+      watchlist: this.props.watchList,
+      history: this.props.history,
+      handleDefaultFavorite: this.handleDefaultFavorite,
+      handleDefaultBookMark: this.handleDefaultBookMark,
+      handleDefaultHistory: this.handleDefaultHistory
+    };
     return (
-      <div className="video-sliders">
+      <div>
         <Header />
         <div style={MainContainer} className="main-container">
-          <Jomez 
-            jomezVideos={this.props.jomezVideos}
-            favorites={this.props.favorites}
-            watchList={this.props.watchList}
-            handleDefaultFavorite={this.handleDefaultFavorite}
-            handleDefaultBookMark={this.handleDefaultBookMark}
-            handleDefaultLink={this.handleDefaultLink}
-          />
-          <Spin 
-            spinVideos={this.props.spinVideos}
-            favorites={this.props.favorites}
-            watchList={this.props.watchList}
-            handleDefaultFavorite={this.handleDefaultFavorite}
-            handleDefaultBookMark={this.handleDefaultBookMark}
-          />
-          <Central 
-            centralVideos={this.props.centralVideos}
-            favorites={this.props.favorites}
-            watchList={this.props.watchList}
-            handleDefaultFavorite={this.handleDefaultFavorite}
-            handleDefaultBookMark={this.handleDefaultBookMark}
-         />
-          <DiscGuy 
-            dggVideos={this.props.dggVideos}
-            favorites={this.props.favorites}
-            watchList={this.props.watchList}
-            handleDefaultFavorite={this.handleDefaultFavorite}
-            handleDefaultBookMark={this.handleDefaultBookMark}
-         />
+          <Jomez {...props} />
+          <Spin {...props} />
+          <Central {...props} />
+          <DiscGuy {...props} />
         </div>
         <div className="loading-container">
           <div className="loading-circle"></div>

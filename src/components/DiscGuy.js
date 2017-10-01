@@ -2,11 +2,14 @@ import React from 'react';
 import OwlCarousel from 'react-owl-carousel2';
 import '../css/App.css';
 
+import {owlOptions, marginTop, ChannelTitle, ChannelLink, SubscribeBtn, VideoOverlayStyle} from './globalStyles.js';
+
 export default class DiscGuy extends React.Component {
 
   handleVideoClick = (e) => {
     e.stopPropagation();
     e.currentTarget.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
+    this.props.handleDefaultHistory(e,this.props.dggVideos);    
   }
 
   handleVideoHover = (e) => {
@@ -68,63 +71,3 @@ export default class DiscGuy extends React.Component {
     );
   }
 }
-
-const marginTop = {
-  marginTop: 25,
-  marginBottom: 25
-}
-
-const ChannelTitle = {
-  display: 'flex',
-  alignItems: 'center',
-  fontSize: 19,
-  letterSpacing: 1,
-  marginBottom: 25
-}
-
-const ChannelLink = {
-  color: '#ffef00',
-  textDecoration: 'none',
-  paddingLeft: 20,
-  paddingRight: 20
-}
-
-const SubscribeBtn = {
-  fontSize: 10,
-  textTransform: 'uppercase',
-  border: '1px solid #ffef00',
-  borderRadius: 20,
-  padding: '10px 25px 10px 25px'
-}
-
-const VideoOverlayStyle = {
-  display: 'none',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100%',
-  background: 'rgba(28, 30, 46, .8)',
-  borderRadius: 20
-}
-
-const owlOptions = {
-  items: 4,
-  dots: false,
-  lazyLoad: true,
-  margin: 10,
-  //loop: true,
-  stagePadding: 0,
-  responsive: {
-    0: {
-      items: 1
-    },
-    600: {
-      items: 2
-    },
-    1440: {
-      items: 3
-    },
-    1920: {
-      items: 4
-    }
-  }
-};

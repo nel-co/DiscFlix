@@ -16,8 +16,13 @@ const urls = [
 export default class App extends Component {
 
   static propTypes = {
+    jomezVideos: PropTypes.array,
+    spinVideos: PropTypes.array,
+    centralVideos: PropTypes.array,
+    dggVideos: PropTypes.array,
     favorites: PropTypes.array,
-    watchList: PropTypes.array
+    watchList: PropTypes.array,
+    history: PropTypes.array
   }
 
   constructor(props) {
@@ -27,7 +32,8 @@ export default class App extends Component {
       spinVideos: [],
       centralVideos: [],
       dggVideos: [],
-      //add dg tutorials
+      //add dg tutorials, aces
+      history: JSON.parse(localStorage.getItem('history')) || [],
       favorites: JSON.parse(localStorage.getItem('favorites')) || [],
       watchList: JSON.parse(localStorage.getItem('watchList')) || []
     }
@@ -42,6 +48,7 @@ export default class App extends Component {
         centralVideos: results[2].items,
         dggVideos: results[3].items
       });
+      console.log(this.state.centralVideos)
     })
   }
 
@@ -57,6 +64,7 @@ export default class App extends Component {
               dggVideos={this.state.dggVideos}
               favorites={this.state.favorites}
               watchList={this.state.watchList}
+              history={this.state.history}
             /> } 
            />
            <Route path='/watchlist' component={ () => 
