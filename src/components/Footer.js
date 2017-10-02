@@ -3,7 +3,7 @@ import React from 'react';
 export default class Footer extends React.Component {
   render() {
     return (
-      <div style={FooterContainer}>
+      <div className="FooterContainer" style={FooterContainer}>
         <span>Help support the site and/or my <br />
         disc golf habits with a <a style={link} href="https://ko-fi.com/A7704BUX" target="_blank" rel="noopener noreferrer">micro-donation</a>.</span>
       </div>

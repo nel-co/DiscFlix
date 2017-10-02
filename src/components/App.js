@@ -15,16 +15,6 @@ const urls = [
 
 export default class App extends Component {
 
-  static propTypes = {
-    jomezVideos: PropTypes.array,
-    spinVideos: PropTypes.array,
-    centralVideos: PropTypes.array,
-    dggVideos: PropTypes.array,
-    favorites: PropTypes.array,
-    watchList: PropTypes.array,
-    history: PropTypes.array
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +29,16 @@ export default class App extends Component {
     }
   }
 
+  static propTypes = {
+    jomezVideos: PropTypes.array,
+    spinVideos: PropTypes.array,
+    centralVideos: PropTypes.array,
+    dggVideos: PropTypes.array,
+    favorites: PropTypes.array,
+    watchList: PropTypes.array,
+    history: PropTypes.array
+  }
+
   componentDidMount() {
     let promises = urls.map(url => fetch(url).then(response => response.json()));
     Promise.all(promises).then(results => {
@@ -48,7 +48,6 @@ export default class App extends Component {
         centralVideos: results[2].items,
         dggVideos: results[3].items
       });
-      console.log(this.state.centralVideos)
     })
   }
 

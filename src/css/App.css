@@ -36,6 +36,21 @@ a:hover {
   color: #ffef00;
 }
 
+.MobileNav-wrapper {
+  display: none;
+  width: 100%;
+  background: #232232;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.16);
+  justify-content: space-around;
+  padding: 20px 15px 20px 15px;
+  font-size: 13px;
+}
+
+.MobileIcon:hover,
+.MobileIcon i:hover {
+  color: #ffef00 !important;
+}
+
 .Videos {
   min-width: 200px;
   height: 180px;
@@ -195,7 +210,7 @@ a:hover {
 
 @keyframes slideUp {
   from {
-    transform: translateY(300px);
+    transform: translateY(50px);
   }
   to {
     transform: translateY(0px);
@@ -212,5 +227,20 @@ a:hover {
     min-width: 320px;
     height: 230px;
     margin: 6px;
+  }
+  .NavBar {
+    justify-content: center !important;
+  }
+  .NavLink-wrapper {
+    display: none;
+  }
+  .MobileNav-wrapper {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+  }
+  .FooterContainer {
+    padding-bottom: 70px;
   }
 }

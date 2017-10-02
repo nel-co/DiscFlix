@@ -1,5 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
+import MobileNav from './MobileNav';
+
 import Logo from '../Discflix.png';
 import '../css/App.css';
 
@@ -7,12 +10,13 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <div style={NavBar}>
+      <div className="NavBar" style={NavBar}>
         <NavLink to="/"><img style={logoStyle} src={Logo} alt="DGVN Logo" /></NavLink>
-        <div style={NavLinks}>
+        <div className="NavLink-wrapper" style={NavLinks}>
           <NavLink to="/watchlist"><span className="NavLinks">Watch List</span></NavLink>
           <NavLink to="/favorites"><span className="NavLinks">Favorites</span></NavLink>
         </div>
+        <MobileNav />
       </div>
     );
   }
@@ -33,6 +37,6 @@ const NavLinks = {
 }
 
 const logoStyle = {
-  maxWidth: 175,
+  maxWidth: 150,
   height: 'auto'
 }
