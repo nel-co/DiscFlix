@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Logo from '../dgvn.png';
+import Logo from '../Discflix.png';
 import '../css/App.css';
 
 export default class ListNav extends React.Component {
