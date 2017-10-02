@@ -7,7 +7,7 @@ export default class ListNav extends React.Component {
   render() {
     return (
       <div style={NavBar}>
-        <NavLink to="/"><img src={Logo} alt="DGVN Logo" /></NavLink>
+        <NavLink to="/"><img style={logoStyle} src={Logo} alt="DGVN Logo" /></NavLink>
         <div style={NavLinks}>
           <NavLink to="/"><span className="NavLinks"><i className="fa fa-times" aria-hidden="true" style={IconStyle}></i></span></NavLink>
         </div>
@@ -32,4 +32,9 @@ const NavLinks = {
 
 const IconStyle = {
   fontSize: 24
+}
+
+const logoStyle = {
+  maxWidth: 150,
+  height: 'auto'
 }
