@@ -36,14 +36,20 @@ a:hover {
   color: #ffef00;
 }
 
-.MobileNav-wrapper {
+.MobileNav-bar {
   display: none;
-  width: 100%;
-  background: #232232;
+  width: 100vw;
+  background: #1c1e2e;
   box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.16);
+}
+
+.MobileNav-wrapper {
+  display: flex;
+  margin: 0 auto;
   justify-content: space-around;
   padding: 20px 15px 20px 15px;
   font-size: 13px;
+  width: 80%;
 }
 
 .MobileIcon:hover,
@@ -234,8 +240,8 @@ a:hover {
   .NavLink-wrapper {
     display: none;
   }
-  .MobileNav-wrapper {
-    display: flex;
+  .MobileNav-bar {
+    display: block;
     position: fixed;
     bottom: 0;
     z-index: 999;

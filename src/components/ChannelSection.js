@@ -42,7 +42,8 @@ export default class ChannelSection extends React.Component {
   }
 
   handleDefaultBookMark = (e, videoArray) => {
-
+    
+    e.preventDefault();
     e.stopPropagation();
 
     // check if id is already in watchlist
@@ -75,6 +76,7 @@ export default class ChannelSection extends React.Component {
 
   handleDefaultFavorite = (e, videoArray) => {
 
+    e.preventDefault();    
     e.stopPropagation();
 
     // check if id is already in favorites
