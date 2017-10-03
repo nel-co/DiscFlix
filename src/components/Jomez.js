@@ -7,7 +7,6 @@ import {owlOptions, marginTop, ChannelTitle, ChannelLink, SubscribeBtn, VideoOve
 export default class Jomez extends React.Component {
 
   handleVideoClick = (e) => {
-    e.preventDefault();        
     e.stopPropagation();
     e.currentTarget.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
     this.props.handleDefaultHistory(e,this.props.jomezVideos);
