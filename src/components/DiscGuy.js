@@ -7,17 +7,20 @@ import {owlOptions, marginTop, ChannelTitle, ChannelLink, SubscribeBtn, VideoOve
 export default class DiscGuy extends React.Component {
 
   handleVideoClick = (e) => {
+    e.preventDefault();            
     e.stopPropagation();
     e.currentTarget.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
     this.props.handleDefaultHistory(e,this.props.dggVideos);    
   }
 
   handleVideoHover = (e) => {
+    e.preventDefault();    
     e.stopPropagation();
     e.currentTarget.querySelector('.VideoOverlay').style.display = 'flex';
   }
 
   handleVideoLeave = (e) => {
+    e.preventDefault();    
     e.stopPropagation();
     e.currentTarget.querySelector('.VideoOverlay').style.display = 'none';
   }

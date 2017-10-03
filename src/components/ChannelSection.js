@@ -76,7 +76,7 @@ export default class ChannelSection extends React.Component {
 
   handleDefaultFavorite = (e, videoArray) => {
 
-    e.preventDefault();    
+    e.preventDefault();
     e.stopPropagation();
 
     // check if id is already in favorites
@@ -108,6 +108,7 @@ export default class ChannelSection extends React.Component {
   }
 
   handleDefaultHistory = (e, videoArray) => {
+    
     if (this.props.history.length === 0) {
       this.setState({
         history: this.props.history.push(videoArray[e.currentTarget.parentNode.parentNode.dataset.index])
