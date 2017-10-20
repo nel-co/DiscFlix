@@ -12,14 +12,12 @@ export default class MobileNav extends Component {
             <i className="fa fa-comments" aria-hidden="true"></i>
             <span>Suggestions</span>
           </a>
-          <span style={borderStyle}></span>
           <NavLink to="/watchlist">
             <div className="MobileIcon" style={iconStyle}>
               <i className="fa fa-bookmark" aria-hidden="true"></i>
               <span>Watch List</span>
             </div>
           </NavLink>
-          <span style={borderStyle}></span>        
           <NavLink to="/favorites">
             <div className="MobileIcon" style={iconStyle}>
               <i className="fa fa-heart" aria-hidden="true"></i>

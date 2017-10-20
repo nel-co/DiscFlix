@@ -36,9 +36,11 @@ export default class WatchList extends React.Component {
 
   render() {
     let watchItems = this.props.watchList.map((item, index) => {
+      let videoImage = this.props.getYoutubeThumbnail(item.snippet.thumbnails);   
       let bg = {
-        background: `url(${item.snippet.thumbnails.standard.url})`,
-        backgroundSize: 'cover',
+        background: `url(${videoImage})`,
+        backgroundSize: '100%',
+        backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
         borderRadius: 20,
         cursor: 'pointer',

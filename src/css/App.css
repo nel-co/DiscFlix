@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
 body {
   overflow-y: auto !important;
 }
@@ -47,9 +46,9 @@ a:hover {
   display: flex;
   margin: 0 auto;
   justify-content: space-around;
-  padding: 20px 15px 20px 15px;
+  padding: 20px 0px 20px 0px;
   font-size: 13px;
-  width: 95%;
+  width: 90%;
 }
 
 .MobileIcon:hover,
@@ -59,7 +58,6 @@ a:hover {
 
 .Videos {
   min-width: 200px;
-  height: 180px;
   margin: 3px;
 }
 
@@ -231,8 +229,8 @@ a:hover {
   .VideoList {
     width: 90%;
     min-width: 320px;
-    height: 230px;
-    margin: 6px;
+    max-height: 230px;
+    margin: 4px;
   }
   .NavBar {
     justify-content: center !important;

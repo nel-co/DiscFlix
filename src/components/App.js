@@ -51,6 +51,20 @@ export default class App extends Component {
     })
   }
 
+  getYoutubeThumbnail = (link) => {
+    if ('maxres' in link) {
+      return link.maxres.url;
+    } else if ('standard' in link) {
+      return link.standard.url;
+    } else if ('high' in link) {
+      return link.high.url;
+    } else if ('medium' in link) {
+      return link.medium.url;
+    } else {
+      return link.default.url;
+    }
+  }
+
   render() {
     return (
       <Router>
@@ -64,16 +78,19 @@ export default class App extends Component {
               favorites={this.state.favorites}
               watchList={this.state.watchList}
               history={this.state.history}
+              getYoutubeThumbnail={this.getYoutubeThumbnail}
             /> } 
            />
            <Route path='/watchlist' component={ () => 
             <WatchList
               watchList={this.state.watchList}
+              getYoutubeThumbnail={this.getYoutubeThumbnail}              
             /> } 
            />
            <Route path='/favorites' component={ () => 
             <Favorites 
               favorites={this.state.favorites}
+              getYoutubeThumbnail={this.getYoutubeThumbnail}              
             /> } 
            />
         </div>

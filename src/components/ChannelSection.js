@@ -12,7 +12,9 @@ export default class ChannelSection extends React.Component {
 
   componentDidMount() {
 
-    let findVideoMatches = document.querySelectorAll('.owl-item');
+    const findVideoMatches = document.querySelectorAll('.owl-item');
+
+    // style favorites
     for (let i = 0; i < findVideoMatches.length; i++) {
       for (let j = 0; j < this.props.favorites.length; j++) {
         if (findVideoMatches[i].childNodes[0].dataset.video === this.props.favorites[j].id) {
@@ -21,6 +23,7 @@ export default class ChannelSection extends React.Component {
       }
     }
 
+    // style watchlist
     for (let i = 0; i < findVideoMatches.length; i++) {
       for (let j = 0; j < this.props.watchList.length; j++) {
         if (findVideoMatches[i].childNodes[0].dataset.video === this.props.watchList[j].id) {
@@ -29,6 +32,7 @@ export default class ChannelSection extends React.Component {
       }
     }
 
+    // style history
     for (let i = 0; i < findVideoMatches.length; i++) {
       for (let j = 0; j < this.props.history.length; j++) {
         if (findVideoMatches[i].childNodes[0].dataset.video === this.props.history[j].id) {
@@ -36,9 +40,7 @@ export default class ChannelSection extends React.Component {
         }
       }
     }
-
     showResults();
-
   }
 
   handleDefaultBookMark = (e, videoArray) => {
@@ -138,7 +140,8 @@ export default class ChannelSection extends React.Component {
       history: this.props.history,
       handleDefaultFavorite: this.handleDefaultFavorite,
       handleDefaultBookMark: this.handleDefaultBookMark,
-      handleDefaultHistory: this.handleDefaultHistory
+      handleDefaultHistory: this.handleDefaultHistory,
+      getYoutubeThumbnail: this.props.getYoutubeThumbnail
     };
     return (
       <div>
