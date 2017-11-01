@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import MobileNav from './MobileNav';
 
-import Logo from '../Discflix.png';
-import '../css/App.css';
+import Logo from '../../Discflix.png';
+import '../../css/App.css';
 
 export default class Nav extends React.Component {
 
@@ -15,7 +15,8 @@ export default class Nav extends React.Component {
         <div className="NavLink-wrapper" style={NavLinks}>
           <NavLink to="/watchlist"><span className="NavLinks">Watch List</span></NavLink>
           <NavLink to="/favorites"><span className="NavLinks">Favorites</span></NavLink>
-          <a className="NavLinks" href="https://github.com/nel-co/DiscFlix/issues/" target="_blank">Suggest a Feature</a>
+          <NavLink to="/stats"><span className="NavLinks">Stats</span></NavLink>
+          <a className="NavLinks" href="https://github.com/nel-co/DiscFlix/issues/" target="_blank" rel="noopener noreferrer">Suggest a Feature</a>
         </div>
         <MobileNav />
       </div>

@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '../css/App.css';
 import WatchList from './WatchList';
 import Favorites from './Favorites';
-import ChannelSection from './ChannelSection';
+import ChannelSection from './Channels/ChannelSection';
+import Stats from './Stats/Stats';
 
 const urls = [
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_otq12MLlspCliJgL2u02A&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
@@ -25,7 +26,8 @@ export default class App extends Component {
       //add dg tutorials, aces
       history: JSON.parse(localStorage.getItem('history')) || [],
       favorites: JSON.parse(localStorage.getItem('favorites')) || [],
-      watchList: JSON.parse(localStorage.getItem('watchList')) || []
+      watchList: JSON.parse(localStorage.getItem('watchList')) || [],
+      isVideoOpen: false
     }
   }
 
@@ -39,6 +41,19 @@ export default class App extends Component {
     history: PropTypes.array
   }
 
+  componentWillMount = () => {
+    // Remove deleted videos from array
+    this.setState({
+      history: this.state.history.filter(Boolean),
+      favorites: this.state.favorites.filter(Boolean),
+      watchList: this.state.watchList.filter(Boolean)
+    })
+    localStorage.setItem('history', JSON.stringify(this.state.history));
+    localStorage.setItem('favorites', JSON.stringify(this.state.favorites));
+    localStorage.setItem('watchList', JSON.stringify(this.state.watchList));
+  }
+  
+
   componentDidMount() {
     let promises = urls.map(url => fetch(url).then(response => response.json()));
     Promise.all(promises).then(results => {
@@ -47,7 +62,7 @@ export default class App extends Component {
         jomezVideos: results[1].items,
         centralVideos: results[2].items,
         dggVideos: results[3].items
-      });
+      });    
     })
   }
 
@@ -65,6 +80,12 @@ export default class App extends Component {
     }
   }
 
+  handleVideoModal = () => {
+    this.setState({ 
+      isVideoOpen: !this.state.isVideoOpen
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -79,19 +100,34 @@ export default class App extends Component {
               watchList={this.state.watchList}
               history={this.state.history}
               getYoutubeThumbnail={this.getYoutubeThumbnail}
+              handleVideoModal={this.handleVideoModal}
+              isVideoOpen={this.state.isVideoOpen}
             /> } 
            />
            <Route path='/watchlist' component={ () => 
             <WatchList
+              history={this.state.history}                        
               watchList={this.state.watchList}
-              getYoutubeThumbnail={this.getYoutubeThumbnail}              
+              getYoutubeThumbnail={this.getYoutubeThumbnail}
+              handleVideoModal={this.handleVideoModal}
+              isVideoOpen={this.state.isVideoOpen}         
             /> } 
            />
            <Route path='/favorites' component={ () => 
-            <Favorites 
+            <Favorites
+              history={this.state.history}            
               favorites={this.state.favorites}
-              getYoutubeThumbnail={this.getYoutubeThumbnail}              
-            /> } 
+              getYoutubeThumbnail={this.getYoutubeThumbnail}
+              handleVideoModal={this.handleVideoModal}
+              isVideoOpen={this.state.isVideoOpen}         
+            /> }
+           />
+           <Route path='/stats' component={ () => 
+            <Stats
+              history={this.state.history}            
+              favorites={this.state.favorites}
+              watchList={this.state.watchList}           
+            /> }
            />
         </div>
       </Router>

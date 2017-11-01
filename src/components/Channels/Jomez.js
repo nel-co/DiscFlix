@@ -1,18 +1,17 @@
 import React from 'react';
 import OwlCarousel from 'react-owl-carousel2';
-import '../css/App.css';
+import '../../css/App.css';
 
-import PH from '../blank-img.jpg'; // Placeholder Image
+import PH from './blank-img.jpg'; // Placeholder Image
 
-import { globalStyles } from './globalStyles.js';
+import { globalStyles } from '../globalStyles.js';
 
+export default class Jomez extends React.Component {
 
-export default class Central extends React.Component {
-  
   handleVideoClick = (e) => {
     e.stopPropagation();
     e.currentTarget.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
-    this.props.handleDefaultHistory(e,this.props.centralVideos);    
+    this.props.handleDefaultHistory(e,this.props.jomezVideos);
   }
 
   handleVideoHover = (e) => {
@@ -28,8 +27,8 @@ export default class Central extends React.Component {
   }
 
   render() {
-    let channelItems = this.props.centralVideos.map((item, index) => {
-      let videoImage = this.props.getYoutubeThumbnail(item.snippet.thumbnails);   
+    let channelItems = this.props.jomezVideos.map((item, index) => {
+      let videoImage = this.props.getYoutubeThumbnail(item.snippet.thumbnails);
       let bg = {
         background: `url(${videoImage})`,
         backgroundSize: '100%',
@@ -45,32 +44,32 @@ export default class Central extends React.Component {
           className="Videos" 
           key={item.id} 
           data-index={index} 
-          data-video={item.id} 
+          data-video={item.id}
           onMouseOver={this.handleVideoHover} 
           onMouseLeave={this.handleVideoLeave}>
-            <img src={PH} alt="blank-image" style={{visibility: 'hidden'}} />
+            <img src={PH} alt="placeholder" style={{visibility: 'hidden'}} />
             <div style={globalStyles.VideoOverlayStyle} className="VideoOverlay">
-              <span onClick={this.handleVideoClick}>
-                <a href={`https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`} target="_blank" rel="noopener"><i className="fa fa-link" aria-hidden="true"></i></a>
+              <span className="icon-btn" onClick={(e) => this.handleVideoClick(e)}>
+                <i className="fa fa-play-circle" aria-hidden="true"></i>
               </span>
-              <span onClick={(e) => this.props.handleDefaultBookMark(e,this.props.centralVideos)}><i className="fa fa-bookmark" aria-hidden="true"></i></span>
-              <span onClick={(e) => this.props.handleDefaultFavorite(e,this.props.centralVideos)}><i className="fa fa-heart" aria-hidden="true"></i></span>
+              <span className="icon-btn" onClick={(e) => this.props.handleDefaultBookMark(e,this.props.jomezVideos)}><i className="fa fa-bookmark" aria-hidden="true"></i></span>
+              <span className="icon-btn" onClick={(e) => this.props.handleDefaultFavorite(e,this.props.jomezVideos)}><i className="fa fa-heart" aria-hidden="true"></i></span>
             </div>
         </div>
       )
     });
     return (
-      <div style={globalStyles.marginTop} id="Central">
+      <div style={globalStyles.marginTop} id="Jomez">
         <div>
           <div style={globalStyles.ChannelTitle}>
-            Central Coast Disc Golf
-            <a href="https://www.youtube.com/subscription_center?add_user=CentralCoastDiscGolf" target="_blank" rel="noopener noreferrer" style={globalStyles.ChannelLink}>
+            Jomez Productions
+            <a href="https://www.youtube.com/subscription_center?add_user=JomezProductions" target="_blank" rel="noopener noreferrer" style={globalStyles.ChannelLink}>
               <div style={globalStyles.SubscribeBtn}>Subscribe</div>
             </a>
           </div>
         </div>
         <div className="video-grid">
-        {this.props.centralVideos.length && <OwlCarousel ref="spin" options={globalStyles.owlOptions}>
+        {this.props.jomezVideos.length && <OwlCarousel ref="jomez" options={globalStyles.owlOptions}>
           {channelItems}
         </OwlCarousel>}
         </div>
@@ -78,4 +77,3 @@ export default class Central extends React.Component {
     );
   }
 }
-

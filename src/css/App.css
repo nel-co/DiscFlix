@@ -31,6 +31,10 @@ a:hover {
   padding-right: 8px;
 }
 
+.NavLinks-i {
+  padding: 0px;
+}
+
 .NavLinks:hover {
   color: #ffef00;
 }
@@ -47,8 +51,8 @@ a:hover {
   margin: 0 auto;
   justify-content: space-around;
   padding: 20px 0px 20px 0px;
-  font-size: 13px;
-  width: 90%;
+  font-size: 12px;
+  width: 88%;
 }
 
 .MobileIcon:hover,
@@ -66,7 +70,6 @@ a:hover {
   min-width: 320px;
   height: 230px;
   margin: 6px;
-  /*	flex-grow: 1; */
 }
 
 .Videos:hover {
@@ -101,6 +104,10 @@ a:hover {
   /* Gecko Browsers */
 }
 
+.VideoOverlay {
+  display: none;
+}
+
 .VideoOverlay i {
   font-size: 18px;
   padding-left: 15px;
@@ -118,7 +125,7 @@ a:hover {
   text-decoration: none;
 }
 
-.VideoOverlay .fa-link {
+.VideoOverlay .fa-play-circle {
   animation: vidLinks .15s ease forwards;
 }
 
@@ -130,7 +137,8 @@ a:hover {
   animation: vidLinks .25s ease forwards;
 }
 
-.fa-link:hover {
+.fa-play-circle:hover,
+.fa-link:hover{
   color: #ffef00;
 }
 
@@ -178,12 +186,15 @@ a:hover {
   }
 }
 
-.main-container {
+/* content = container for videos */
+.content {
   display: none;
+  /* display: flex; */
 }
 
 .loading-container {
   display: flex;
+  /* display: none; */
   justify-content: center;
   align-items: center;
   height: 25vh;
@@ -221,6 +232,131 @@ a:hover {
   }
 }
 
+/*=================
+Video Modal Section 
+===================*/
+
+.VideoModal-container {
+  position: absolute;
+  top: 0;
+  height: 100vh; width: 100vw;
+  background: black;
+  z-index: 1000;
+}
+
+.VideoModal-close {
+  cursor: pointer;
+  position: absolute;
+  top: 20px; right: 20px;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.555);
+}
+
+.VideoModal-youtube {
+  height: 100%; width: 100%;
+  overflow-y: hidden;
+}
+
+.VideoModal-youtube iframe {
+  border: none;
+  height: 100%; width: 100%;
+}
+
+/*=================
+    Stat Section 
+===================*/
+
+.Stat-solo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 15px;  
+}
+
+.Stat-recent {
+  flex-grow: 1;
+  margin-left: 15px;
+}
+
+.Stat-container {
+  font-size: 13px;    
+
+}
+
+.Stat-top-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.Stat-box {
+  border: 1px solid white;
+  display: flex;
+  align-items: center;  
+}
+
+.Stat-box--sm {
+  justify-content: space-between;
+  padding: 30px 20px;
+  margin-bottom: 15px;
+}
+
+.Stat-box--lg {
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px;
+}
+
+.Stat-solo .Stat-box span:nth-child(2) {
+  text-align: right;
+}
+
+.Stat-header {
+  margin-top: 0px;
+}
+
+.Stat-recent-list:nth-of-type(1) {
+  border-top: 1px solid white;  
+}
+
+.Stat-recent-list a {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  padding: 20px 10px;
+}
+
+.Stat-recent-list a:hover {
+  color: #ffef00;
+}
+
+.Stat-recent-list span:nth-of-type(2) {
+  padding-left: 15px;
+}
+
+.Stat-videos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Stat-videos .Stat-box {
+  flex-grow: 1;
+}
+
+.Stat-videos .Stat-box:nth-of-type(2) {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.Stat-videos .Stat-box span:nth-child(2) {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.Stat-recent-list .Stat-recent-empty {
+  padding-top: 10px;
+}
+
 @media screen and (max-width: 740px) {
   .videoContainer {
     display: flex;
@@ -243,6 +379,32 @@ a:hover {
     position: fixed;
     bottom: 0;
     z-index: 999;
+  }
+  .Stat-top-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .Stat-box--sm {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .Stat-recent {
+    margin: 0px;    
+    margin-bottom: 30px;
+  }
+  .Stat-solo {
+    margin-right: 0px;
+    margin-bottom: 30px;    
+  }
+  .Stat-videos {
+    flex-direction: column;
+  }
+  .Stat-videos .Stat-box:nth-of-type(2) {
+    margin: 0px;
+    margin-bottom: 15px;    
+  }
+  .Stat-videos .Stat-box--lg {
+    margin-bottom: 15px;
   }
   .FooterContainer {
     padding-bottom: 70px;

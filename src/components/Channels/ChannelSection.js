@@ -1,12 +1,13 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../Header';
 import Jomez from './Jomez';
 import Spin from './Spin';
 import Central from './Central';
 import DiscGuy from './DiscGuy';
-import Footer from './Footer';
-import '../css/App.css';
+import Footer from '../Footer';
+import VideoModal from '../VideoModal';
 
+import '../../css/App.css';
 
 export default class ChannelSection extends React.Component {
 
@@ -40,7 +41,6 @@ export default class ChannelSection extends React.Component {
         }
       }
     }
-    showResults();
   }
 
   handleDefaultBookMark = (e, videoArray) => {
@@ -109,24 +109,14 @@ export default class ChannelSection extends React.Component {
 
   handleDefaultHistory = (e, videoArray) => {
     
-    if (this.props.history.length === 0) {
-      this.setState({
-        history: this.props.history.push(videoArray[e.currentTarget.parentNode.parentNode.dataset.index])
-      });
-      // store history to local storage
-      localStorage.setItem('history', JSON.stringify(this.props.history));
-    } else {
-      for (var i = 0; i < this.props.history.length; i++) {
-        if (e.currentTarget.parentNode.parentNode.dataset.video !== this.props.history[i].id) {
-          // push to history array
-          this.setState({
-            history: this.props.history.push(videoArray[e.currentTarget.parentNode.parentNode.dataset.index])
-          });
-          // store history to local storage
-          localStorage.setItem('history', JSON.stringify(this.props.history));
-        }
-      }
-    }
+    this.setState({
+      history: this.props.history.push(videoArray[e.currentTarget.parentNode.parentNode.dataset.index])
+    });
+    // store history to local storage
+    localStorage.setItem('history', JSON.stringify(this.props.history));
+
+    // Set video modal to true/false
+    this.props.handleVideoModal();
   }
 
   render() {
@@ -143,19 +133,40 @@ export default class ChannelSection extends React.Component {
       handleDefaultHistory: this.handleDefaultHistory,
       getYoutubeThumbnail: this.props.getYoutubeThumbnail
     };
-    return (
-      <div>
+
+    const isVideoOpen = this.props.isVideoOpen;
+    let modal;
+    let mainContainer;
+    if (isVideoOpen) {
+      modal = <VideoModal history={this.props.history} handleVideoModal={this.props.handleVideoModal} />;
+      mainContainer = null;
+    } else {
+      modal = null;
+      mainContainer = (
+        <div>
         <Header />
-        <div style={MainContainer} className="main-container">
-          <Jomez {...props} />
-          <Spin {...props} />
-          <Central {...props} />
-          <DiscGuy {...props} />
+        <div className="content">
+          <div style={MainContainer} className="main-container">
+            <Jomez {...props} />
+            <Spin {...props} />
+            <Central {...props} />
+            <DiscGuy {...props} />
+          </div>
         </div>
         <div className="loading-container">
           <div className="loading-circle"></div>
         </div>
         <Footer />
+        </div>
+      );
+    }
+    setTimeout(function () {
+      showResults();
+    }, 1200);
+    return (
+      <div>
+        {modal}
+        {mainContainer}
       </div>
     );
   }
@@ -168,10 +179,8 @@ const MainContainer = {
 }
 
 function showResults() {
-  let main = document.querySelector('.main-container');
-  let load = document.querySelector('.loading-container');
-  setTimeout(function() {
-    load.style.display = 'none';
-    main.style.display = 'flex';
-  }, 1200);
-}
+  if (!document.querySelector('.VideoModal-container') && document.querySelector('.content')) {
+    document.querySelector('.content').style.display = 'flex';
+    document.querySelector('.loading-container').style.display = 'none';
+  }
+};

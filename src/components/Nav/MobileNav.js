@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../css/App.css';
+import '../../css/App.css';
 
 export default class MobileNav extends Component {
   render() {
     return (
       <div className="MobileNav-bar">
         <div className="MobileNav-wrapper">
-          <a className="MobileIcon" style={iconStyle} href="https://github.com/nel-co/DiscFlix/issues/" target="_blank">
+          <a className="MobileIcon" style={iconStyle} href="https://github.com/nel-co/DiscFlix/issues/" target="_blank" rel="noopener noreferrer">
             <i className="fa fa-comments" aria-hidden="true"></i>
             <span>Suggestions</span>
           </a>
@@ -24,6 +24,12 @@ export default class MobileNav extends Component {
               <span>Favorites</span>
             </div>
           </NavLink>
+          <NavLink to="/stats">
+            <div className="MobileIcon" style={iconStyle}>
+              <i className="fa fa-bar-chart" aria-hidden="true"></i>
+              <span>Stats</span>
+            </div>
+          </NavLink>
         </div>
       </div>
     )
@@ -35,8 +41,4 @@ const iconStyle = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center'
-}
-
-const borderStyle = {
-  borderLeft: '1px solid #1B1A26'
 }

@@ -1,13 +1,21 @@
 import React from 'react';
-import ListNav from './ListNav';
+import ListNav from './Nav/ListNav';
+import VideoModal from './VideoModal';
 import '../css/App.css';
-
 
 export default class WatchList extends React.Component {
 
   handleVideoClick = (e) => {
     e.stopPropagation();
     e.currentTarget.parentNode.parentNode.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
+    this.setState({
+      history: this.props.history.push(this.props.watchList[e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.index])
+    });
+    // store history to local storage
+    localStorage.setItem('history', JSON.stringify(this.props.history));
+
+    // Set video modal to true/false
+    this.props.handleVideoModal();
   }
 
   handleVideoHover = (e) => {
@@ -59,7 +67,7 @@ export default class WatchList extends React.Component {
 	  						<span style={videoTitle}>{item.snippet.title}</span>
 	  						<div style={videoIcons}>
 			  					<span onClick={this.handleVideoClick}>
-			  						<a href={`https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`} target="_blank"><i className="fa fa-link" aria-hidden="true"></i></a>
+                    <i className="fa fa-play-circle" aria-hidden="true"></i>
 			  					</span>
 			  					<span onClick={this.removeVideo}><i className="fa fa-times" aria-hidden="true"></i></span>
 			  					</div>
@@ -68,15 +76,30 @@ export default class WatchList extends React.Component {
   			</div>
       )
     });
+    const isVideoOpen = this.props.isVideoOpen;
+    let modal;
+    let mainContainer;
+    if(isVideoOpen) {
+      modal = <VideoModal history={this.props.history} handleVideoModal={this.props.handleVideoModal} />;
+      mainContainer = null;
+    } else {
+      modal = null;
+      mainContainer = (
+        <div>
+          <ListNav />
+          <div style={Container} className="ScreenAnimate">
+            <h1 style={HeadlineStyle}>Watch List</h1>
+            <div style={videoContainer} className="videoContainer">
+              {this.props.watchList.length !== 0 ? watchItems : 'Nothing here. Add videos to your watch list to see them here.'}
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
       <div>
-      	<ListNav />
-      	<div style={Container} className="ScreenAnimate">
-      		<h1 style={HeadlineStyle}>Watch List</h1>
-      		<div style={videoContainer} className="videoContainer">
-      			{this.props.watchList.length !== 0 ? watchItems : 'Nothing here. Add videos to your watch list to see them here.'}
-      		</div>
-      	</div>
+        {modal}
+        {mainContainer}
       </div>
     )
   }
@@ -88,7 +111,7 @@ const Container = {
 }
 
 const HeadlineStyle = {
-  marginTop: 50,
+  marginTop: 30,
   fontSize: '1.5em'
 }
 

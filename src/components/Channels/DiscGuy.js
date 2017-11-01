@@ -1,17 +1,17 @@
 import React from 'react';
 import OwlCarousel from 'react-owl-carousel2';
-import '../css/App.css';
+import '../../css/App.css';
 
-import PH from '../blank-img.jpg'; // Placeholder Image
+import PH from './blank-img.jpg'; // Placeholder Image
 
-import { globalStyles } from './globalStyles.js';
+import { globalStyles } from '../globalStyles.js';
 
-export default class Jomez extends React.Component {
+export default class DiscGuy extends React.Component {
 
   handleVideoClick = (e) => {
     e.stopPropagation();
     e.currentTarget.parentNode.parentNode.style.borderBottom = '3px solid #ffef00';
-    this.props.handleDefaultHistory(e,this.props.jomezVideos);
+    this.props.handleDefaultHistory(e,this.props.dggVideos);    
   }
 
   handleVideoHover = (e) => {
@@ -27,10 +27,10 @@ export default class Jomez extends React.Component {
   }
 
   render() {
-    let channelItems = this.props.jomezVideos.map((item, index) => {
-      let videoImage = this.props.getYoutubeThumbnail(item.snippet.thumbnails);
+    let channelItems = this.props.dggVideos.map((item, index) => {
+      let videoImage = this.props.getYoutubeThumbnail(item.snippet.thumbnails); 
       let bg = {
-        background: `#1c1e2e url(${videoImage})`,
+        background: `url(${videoImage})`,
         backgroundSize: '100%',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
@@ -47,29 +47,29 @@ export default class Jomez extends React.Component {
           data-video={item.id} 
           onMouseOver={this.handleVideoHover} 
           onMouseLeave={this.handleVideoLeave}>
-            <img src={PH} alt="blank-image" style={{visibility: 'hidden'}} />
+            <img src={PH} alt="placeholder" style={{visibility: 'hidden'}} />
             <div style={globalStyles.VideoOverlayStyle} className="VideoOverlay">
-              <span onClick={(e) => this.handleVideoClick(e)}>
-                <a href={`https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`} target="_blank" rel="noopener"><i className="fa fa-link" aria-hidden="true"></i></a>
+              <span onClick={this.handleVideoClick}>
+                <i className="fa fa-play-circle" aria-hidden="true"></i>
               </span>
-              <span onClick={(e) => this.props.handleDefaultBookMark(e,this.props.jomezVideos)}><i className="fa fa-bookmark" aria-hidden="true"></i></span>
-              <span onClick={(e) => this.props.handleDefaultFavorite(e,this.props.jomezVideos)}><i className="fa fa-heart" aria-hidden="true"></i></span>
+              <span onClick={(e) => this.props.handleDefaultBookMark(e,this.props.dggVideos)}><i className="fa fa-bookmark" aria-hidden="true"></i></span>
+              <span onClick={(e) => this.props.handleDefaultFavorite(e,this.props.dggVideos)}><i className="fa fa-heart" aria-hidden="true"></i></span>
             </div>
         </div>
       )
     });
     return (
-      <div style={globalStyles.marginTop} id="Jomez">
+      <div style={globalStyles.marginTop} id="dgg">
         <div>
           <div style={globalStyles.ChannelTitle}>
-            Jomez Productions
-            <a href="https://www.youtube.com/subscription_center?add_user=JomezProductions" target="_blank" rel="noopener noreferrer" style={globalStyles.ChannelLink}>
+            The Disc Golf Guy
+            <a href="https://www.youtube.com/subscription_center?add_user=thediscgolfguy" target="_blank" rel="noopener noreferrer" style={globalStyles.ChannelLink}>
               <div style={globalStyles.SubscribeBtn}>Subscribe</div>
             </a>
           </div>
         </div>
         <div className="video-grid">
-        {this.props.jomezVideos.length && <OwlCarousel ref="jomez" options={globalStyles.owlOptions}>
+        {this.props.dggVideos.length && <OwlCarousel ref="spin" options={globalStyles.owlOptions}>
           {channelItems}
         </OwlCarousel>}
         </div>

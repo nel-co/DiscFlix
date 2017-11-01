@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './Nav';
+import Nav from './Nav/Nav';
 import BG from '../bg.png';
 
 class Hero extends React.Component {
