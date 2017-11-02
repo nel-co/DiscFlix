@@ -64,7 +64,7 @@ export default class Spin extends React.Component {
           <div style={globalStyles.ChannelTitle}>
             Spin Tv
             <a href="https://www.youtube.com/subscription_center?add_user=TheSpinTVcom" target="_blank" rel="noopener noreferrer" style={globalStyles.ChannelLink}>
-              <div style={globalStyles.SubscribeBtn}>Subscribe</div>
+              <div style={globalStyles.SubscribeBtn}>Follow</div>
             </a>
           </div>
         </div>

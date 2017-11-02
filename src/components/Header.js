@@ -5,12 +5,10 @@ import BG from '../bg.png';
 class Hero extends React.Component {
   render() {
     return (
-      <div style={HeaderText}>
-        <span>
-          Disc Golf videos from <br />
-          your favorite YouTube channels.
-        </span>
-      </div>
+      <h1 style={HeaderText}>
+        Disc Golf videos from <br />
+        your favorite YouTube channels.
+      </h1>
     );
   }
 }

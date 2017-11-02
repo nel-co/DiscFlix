@@ -4,6 +4,8 @@ import Jomez from './Jomez';
 import Spin from './Spin';
 import Central from './Central';
 import DiscGuy from './DiscGuy';
+import Aces from './Aces';
+import Tips from './Tips';
 import Footer from '../Footer';
 import VideoModal from '../VideoModal';
 
@@ -125,6 +127,8 @@ export default class ChannelSection extends React.Component {
       spinVideos: this.props.spinVideos,
       centralVideos: this.props.centralVideos,
       dggVideos: this.props.dggVideos,
+      aceVideos: this.props.aceVideos,
+      dgTipVideos: this.props.dgTipVideos,
       favorites: this.props.favorites,
       watchlist: this.props.watchList,
       history: this.props.history,
@@ -151,6 +155,8 @@ export default class ChannelSection extends React.Component {
             <Spin {...props} />
             <Central {...props} />
             <DiscGuy {...props} />
+            <Aces {...props} />
+            <Tips {...props} />
           </div>
         </div>
         <div className="loading-container">

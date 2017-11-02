@@ -21,11 +21,6 @@ const NavBar = {
   paddingTop: 30,
 }
 
-const NavLinks = {
-  fontSize: 13,
-  cursor: 'pointer'
-}
-
 const IconStyle = {
   fontSize: 24
 }

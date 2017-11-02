@@ -61,12 +61,12 @@ export default class Jomez extends React.Component {
     return (
       <div style={globalStyles.marginTop} id="Jomez">
         <div>
-          <div style={globalStyles.ChannelTitle}>
+          <h2 style={globalStyles.ChannelTitle}>
             Jomez Productions
             <a href="https://www.youtube.com/subscription_center?add_user=JomezProductions" target="_blank" rel="noopener noreferrer" style={globalStyles.ChannelLink}>
-              <div style={globalStyles.SubscribeBtn}>Subscribe</div>
+              <div style={globalStyles.SubscribeBtn}>Follow</div>
             </a>
-          </div>
+          </h2>
         </div>
         <div className="video-grid">
         {this.props.jomezVideos.length && <OwlCarousel ref="jomez" options={globalStyles.owlOptions}>

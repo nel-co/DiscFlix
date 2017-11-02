@@ -27,6 +27,7 @@ export const globalStyles = {
   ChannelTitle: {
     display: 'flex',
     alignItems: 'center',
+    fontWeight: 400,    
     fontSize: 19,
     letterSpacing: 1,
     marginBottom: 25
@@ -39,6 +40,7 @@ export const globalStyles = {
   },
   SubscribeBtn: {
     fontSize: 10,
+    fontWeight: 400,
     textTransform: 'uppercase',
     border: '1px solid #ffef00',
     borderRadius: 20,

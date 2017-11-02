@@ -64,7 +64,7 @@ export default class DiscGuy extends React.Component {
           <div style={globalStyles.ChannelTitle}>
             The Disc Golf Guy
             <a href="https://www.youtube.com/subscription_center?add_user=thediscgolfguy" target="_blank" rel="noopener noreferrer" style={globalStyles.ChannelLink}>
-              <div style={globalStyles.SubscribeBtn}>Subscribe</div>
+              <div style={globalStyles.SubscribeBtn}>Follow</div>
             </a>
           </div>
         </div>

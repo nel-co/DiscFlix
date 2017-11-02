@@ -7,11 +7,14 @@ import Favorites from './Favorites';
 import ChannelSection from './Channels/ChannelSection';
 import Stats from './Stats/Stats';
 
+// Production
 const urls = [
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_otq12MLlspCliJgL2u02A&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UUmGyCEbHfY91NFwHgioNLMQ&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
   `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UUy1Rr-GkiL8vlPApKsw6SuA&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
-  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_VFGL2488ElJvThosFxaRQ&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`
+  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=UU_VFGL2488ElJvThosFxaRQ&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
+  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=PLwpmUfonsaevklzeLsLhPaycdqwEtLzkj&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`,
+  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=16&playlistId=PLwpmUfonsaeuayhOqjIARZ9Sdpi5yxEOa&key=AIzaSyCvJq54RhMj_CvM1xzTU815qgy3_JHHeX8`
 ];
 
 export default class App extends Component {
@@ -23,7 +26,8 @@ export default class App extends Component {
       spinVideos: [],
       centralVideos: [],
       dggVideos: [],
-      //add dg tutorials, aces
+      aceVideos: [],
+      dgTipVideos: [],
       history: JSON.parse(localStorage.getItem('history')) || [],
       favorites: JSON.parse(localStorage.getItem('favorites')) || [],
       watchList: JSON.parse(localStorage.getItem('watchList')) || [],
@@ -36,6 +40,8 @@ export default class App extends Component {
     spinVideos: PropTypes.array,
     centralVideos: PropTypes.array,
     dggVideos: PropTypes.array,
+    aceVideos: PropTypes.array,
+    dgTipVideos: PropTypes.array,
     favorites: PropTypes.array,
     watchList: PropTypes.array,
     history: PropTypes.array
@@ -61,17 +67,20 @@ export default class App extends Component {
         spinVideos: results[0].items,
         jomezVideos: results[1].items,
         centralVideos: results[2].items,
-        dggVideos: results[3].items
+        dggVideos: results[3].items,
+        aceVideos: results[4].items,
+        dgTipVideos: results[5].items
       });    
     })
   }
 
   getYoutubeThumbnail = (link) => {
-    if ('maxres' in link) {
-      return link.maxres.url;
-    } else if ('standard' in link) {
-      return link.standard.url;
-    } else if ('high' in link) {
+    // if ('maxres' in link) {
+    //   return link.maxres.url;
+    // } else if ('standard' in link) {
+    //   return link.standard.url;
+    // } else 
+    if ('high' in link) {
       return link.high.url;
     } else if ('medium' in link) {
       return link.medium.url;
@@ -96,6 +105,8 @@ export default class App extends Component {
               spinVideos={this.state.spinVideos}
               centralVideos={this.state.centralVideos}
               dggVideos={this.state.dggVideos}
+              aceVideos={this.state.aceVideos}
+              dgTipVideos={this.state.dgTipVideos}
               favorites={this.state.favorites}
               watchList={this.state.watchList}
               history={this.state.history}
