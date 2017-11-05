@@ -1,23 +1,25 @@
 import React from 'react';
 import Nav from './Nav/Nav';
-import BG from '../bg.png';
+import Ad from './Ad';
 
 class Hero extends React.Component {
   render() {
     return (
-      <h1 style={HeaderText}>
-        Disc Golf videos from <br />
-        your favorite YouTube channels.
-      </h1>
+      <div className="Hero-Container">
+        <h1>
+          Watch Disc Golf videos from <br className="dt" />
+          your favorite YouTube channels.
+        </h1>
+        <Ad />
+      </div>
     );
   }
 }
 
-
 export default class Header extends React.Component {
   render() {
     return (
-      <div style={HeaderSection}>
+      <div className="Header-Section" style={HeaderSection}>
         <Nav />
         <Hero />
       </div>
@@ -26,19 +28,7 @@ export default class Header extends React.Component {
 }
 
 const HeaderSection = {
-  background: `url(${BG})`,
+  background: `#1c1e2e`,
   backgroundPosition: 'center',
   backgroundSize: 'cover',
-  height: 530
-}
-
-const HeaderText = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: 400,
-  fontSize: 24,
-  textAlign: 'center',
-  padding: 20,
-  fontWeight: 400
 }

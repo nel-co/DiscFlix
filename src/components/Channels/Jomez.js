@@ -47,7 +47,7 @@ export default class Jomez extends React.Component {
           data-video={item.id}
           onMouseOver={this.handleVideoHover} 
           onMouseLeave={this.handleVideoLeave}>
-            <img src={PH} alt="placeholder" style={{visibility: 'hidden'}} />
+            <img src={PH} alt="placeholder for disc golf video" style={{visibility: 'hidden'}} />
             <div style={globalStyles.VideoOverlayStyle} className="VideoOverlay">
               <span className="icon-btn" onClick={(e) => this.handleVideoClick(e)}>
                 <i className="fa fa-play-circle" aria-hidden="true"></i>

@@ -60,6 +60,57 @@ a:hover {
   color: #ffef00 !important;
 }
 
+/*=================
+    Hero Section 
+===================*/
+.Header-Section {
+  height: 530px;
+}
+
+.Hero-Container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%; width: 80%;
+  margin: 0 auto;
+}
+
+.Hero-Container h1 {
+  font-size: 2.5em;
+}
+
+.Ad-Container h3 {
+  font-size: 14px;
+  text-align: center;
+}
+
+.dt {
+  display: block;
+}
+
+.mb {
+  display: none;
+}
+
+@media screen and (max-width: 740px) {
+  .Header-Section {
+    height: 350px;
+    padding-bottom: 25px;
+  }
+  .Hero-Container {
+    text-align: center;
+  }
+  .Hero-Container h1 {
+    font-size: 2em;
+  }
+  .dt {
+    display: none;
+  }
+  .mb {
+    display: block;
+  }
+}
+
 .Videos {
   min-width: 200px;
   margin: 3px;

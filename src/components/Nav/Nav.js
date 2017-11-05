@@ -29,7 +29,7 @@ const NavBar = {
   justifyContent: 'space-between',
   alignItems: 'center',
   margin: '0 auto',
-  width: '90%',
+  width: '80%',
   paddingTop: 30,
 }
 
@@ -39,6 +39,6 @@ const NavLinks = {
 }
 
 const logoStyle = {
-  maxWidth: 150,
+  maxWidth: 120,
   height: 'auto'
 }

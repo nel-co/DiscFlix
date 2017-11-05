@@ -48,7 +48,7 @@ export default class Central extends React.Component {
           data-video={item.id} 
           onMouseOver={this.handleVideoHover} 
           onMouseLeave={this.handleVideoLeave}>
-            <img src={PH} alt="placeholder" style={{visibility: 'hidden'}} />
+            <img src={PH} alt="placeholder for disc golf video" style={{visibility: 'hidden'}} />
             <div style={globalStyles.VideoOverlayStyle} className="VideoOverlay">
               <span onClick={this.handleVideoClick}>
                 <i className="fa fa-play-circle" aria-hidden="true"></i>
