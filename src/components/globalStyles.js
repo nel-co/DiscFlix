@@ -4,7 +4,7 @@ export const globalStyles = {
     dots: false,
     lazyLoad: true,
     margin: 10,
-    stagePadding: 30,
+    // stagePadding: 30,
     responsive: {
       0: {
         items: 1
@@ -57,5 +57,14 @@ export const globalStyles = {
     position: 'absolute',
     top: 0,
     left: 0
+  },
+  ThumbnailBackground: {
+    background: '#2e2e42',
+    backgroundSize: '100%',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+    borderRadius: 20,
+    boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.19)',
+    cursor: 'pointer'
   }
 };

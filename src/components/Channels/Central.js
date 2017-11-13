@@ -6,7 +6,6 @@ import PH from './blank-img.jpg'; // Placeholder Image
 
 import { globalStyles } from '../globalStyles.js';
 
-
 export default class Central extends React.Component {
   
   handleVideoClick = (e) => {
@@ -29,21 +28,13 @@ export default class Central extends React.Component {
 
   render() {
     let channelItems = this.props.centralVideos.map((item, index) => {
-      let videoImage = this.props.getYoutubeThumbnail(item.snippet.thumbnails);   
-      let bg = {
-        background: `url(${videoImage})`,
-        backgroundSize: '100%',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
-        borderRadius: 20,
-        boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.19)',
-        cursor: 'pointer'
-      }
+      let videoImage = this.props.getYoutubeThumbnail(item.snippet.thumbnails);
       return (
         <div 
-          style={bg} 
-          className="Videos" 
-          key={item.id} 
+          style={globalStyles.ThumbnailBackground} 
+          className="Videos owl-lazy" 
+          key={item.id}
+          data-src={videoImage}
           data-index={index} 
           data-video={item.id} 
           onMouseOver={this.handleVideoHover} 

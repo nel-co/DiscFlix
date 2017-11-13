@@ -34,7 +34,6 @@ export default class Stats extends React.Component {
             </div>
       		</div>
       	</div>
-        <Footer />
       </div>
     )
   }
